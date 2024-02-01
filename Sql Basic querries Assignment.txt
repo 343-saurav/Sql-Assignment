@@ -1,0 +1,47 @@
+create database EmployeeDb
+use EmployeeDb
+CREATE TABLE Worker (
+    Worker_Id int primary key ,
+    FIRST_NAME CHAR(25)  NOT NULL,
+    LAST_NAME CHAR(25),
+    SALARY int CHECK (Salary >= 10000 AND Salary <= 70000),
+    JOINING_DATE DATETIME,
+	 department VARCHAR(25) CHECK (department IN ('HR', 'Sales', 'Accts', 'IT'))
+);
+INSERT INTO Worker (Worker_Id, FIRST_NAME, LAST_NAME,SALARY, JOINING_DATE,department)
+VALUES (1, 'Saurav','Tandon',10200,'2016-06-11 00:00:00','HR' ),
+ (2, 'Saurav','Tandon',60401,'2016-06-11 00:00:00','HR' ),
+ (3, 'Animesh','Pandey',21100,'2016-06-12 10:00:00','Sales' ),
+(4, 'Utkarsh','Singh',10506,'2016-06-11 00:45:00','IT' ),
+ (5, 'Shreya','Goel',10540,'2016-08-11 00:00:00','HR' ),
+ (6, 'Aniket','TAp',10045,'2019-06-11 00:06:00','IT' ),
+ (7, 'Sauou','Taon',10043,'2019-06-11 00:00:00','HR' ),
+ (8, 'Chirag','Panchayat',10046,'2016-06-01 00:00:00','Sales' ),
+ (9, 'proya','jaiswal',10054,'2017-06-11 00:00:00','HR' ),
+(10, 'Atul','Pandey',10470,'2015-06-11 00:20:00','Accts' ),
+(11, 'Anjali','Raj',10080,'2016-07-11 00:30:00','HR' );
+
+
+SELECT FIRST_NAME as WORKER_NAME from  Worker
+SELECT UPPER(FIRST_NAME) from Worker
+SELECT DISTINCT DEPARTMENT FROM Worker;
+SELECT SUBSTRING(FIRST_NAME, 1, 3)  FROM Worker;
+SELECT CHARINDEX('a', 'Saurav') AS position;
+SELECT RTRIM(FIRST_NAME)  FROM Worker;
+SELECT LTRIM(DEPARTMENT) FROM Worker;
+SELECT DISTINCT DEPARTMENT, LEN(DEPARTMENT) FROM Worker;
+SELECT REPLACE(FIRST_NAME, 'a', 'A')  FROM Worker;
+SELECT CONCAT(FIRST_NAME, ' ', LAST_NAME) AS COMPLETE_NAME FROM Worker;
+SELECT * FROM Worker ORDER BY FIRST_NAME ASC;
+SELECT * FROM Worker ORDER BY FIRST_NAME ASC, DEPARTMENT DESC;
+SELECT * FROM Worker WHERE FIRST_NAME IN ('Vipul', 'Satish');
+SELECT * FROM Worker WHERE FIRST_NAME NOT IN ('Vipul', 'Satish');
+SELECT * FROM Worker WHERE DEPARTMENT = 'Admin';
+SELECT * FROM Worker WHERE FIRST_NAME LIKE '%a%';
+SELECT * FROM Worker WHERE FIRST_NAME LIKE '%a';
+SELECT * FROM Worker WHERE FIRST_NAME LIKE '_____h';
+SELECT * FROM Worker WHERE SALARY BETWEEN 100000 AND 500000;
+SELECT * FROM Worker WHERE MONTH(JOINING_DATE) = 2 AND YEAR(JOINING_DATE) = 2014;
+SELECT COUNT(*) 
+FROM Worker
+WHERE Department = 'Admin';
